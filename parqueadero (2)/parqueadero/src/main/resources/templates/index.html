@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parqueadero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PARQUEADERO</h1>
+        <form id="formulario">
+            <label for="placa">Placa:</label>
+            <input type="text" id="placa" name="placa" required>
+            
+            <label for="casco">¿Casco?</label>
+            <select id="casco" name="casco">
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+            </select>
+            
+            <button type="button" onclick="registrarMoto()">Registrar</button>
+        </form>
+
+        <div id="tabla">
+            <h2>Motos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Hora de Ingreso</th>
+                        <th>Casco</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaMotos">
+                    <!-- Aquí se cargarán las filas de la tabla -->
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

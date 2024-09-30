@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehículos</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Vehículos</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Hora de Entrada</th>
+            <th>Casco</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="moto : ${motos}">
+            <td th:text="${moto.plateNumber}">Plate</td>
+            <td th:text="${moto.entryTime}">Entry Time</td>
+            <td th:text="${moto.casco ? 'Sí' : 'No'}">Casco</td>
+            <td>
+                <!-- Formulario para editar -->
+                <form th:action="@{'/parqueadero/editar/' + ${moto.plateNumber}}" method="put">
+                    <label>
+                        <input type="text" name="plateNumber" placeholder="Nueva placa" required>
+                    </label>
+                    <label>
+                        <input type="time" name="entryTime" required>
+                    </label>
+                    <button type="submit">Editar</button>
+                </form>
+                <form th:action="@{'/parqueadero/eliminar/' + ${moto.plateNumber}}" method="post">
+                    <button type="submit">Eliminar</button>
+                </form>
+                <form th:action="@{'/parqueadero/cobrar/' + ${moto.plateNumber}}" method="get">
+                    <button type="submit">Cobrar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
